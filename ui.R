@@ -60,9 +60,9 @@ ui <- fluidPage(
                       p("From the radio button select bmi for prediction, slide the button to your choosing bmi and you will have display the predicted charges for it. "),
                       
              ),
-             tabPanel("Go back to my Github repository",
-                      
-                      
+             tabPanel("Go back to my Github repository",  
+                   
+                      a("https://github.com/AnalystJanine1/Shiny-App"), 
              )
   )
 )
