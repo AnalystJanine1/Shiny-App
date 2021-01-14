@@ -62,7 +62,7 @@ ui <- fluidPage(
              ),
              tabPanel("Go back to my Github repository",  
                    
-                      a("https://github.com/AnalystJanine1/Shiny-App"), 
+                      a("https://github.com/AnalystJanine1/Shiny-App") , 
              )
   )
 )
