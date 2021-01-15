@@ -1,0 +1,62 @@
+---
+title: 'Course Project: Shiny App Presentation(press next arrow)'
+author: "Janine Djeundje"
+date: "15/01/2021"
+output: ioslides_presentation
+---
+## Description of the course project
+
+In this project, we were asked to write a shiny application with the following description:
+
+- It should contain a documentation explaining what the user needs to get started with the shiny application,
+- It should be deployed on the Rstudio's shiny server,
+- The server.R and ui.R code should be shared on github.
+
+**Press the next arrow to move to the next slide.**
+
+## The idea picth in the shiny app
+
+The shny App presented here was created using the insurance dataset from <https://www.kaggle.com/mirichoi0218/insurance>. 
+
+It has 1338 observations for 7 variables among which:
+age, sex, bmi, children, smoker, region and charges.In this app, we show how the medical charges vary by bmi using a
+linear regression model fitted in the selected data. 
+
+Also, a summary of the fitted model is displayed to see it performance each time the data is selected. Furthermore, calculation of the predicted charges for a selected bmi is also displayed.  
+
+## How to use this shiny app
+
+Everything needed to get started with the application is all embedded in the documentation panel of our app.
+You would find the application running using <https://census2020.shinyapps.io/Shiny-Application/>.
+
+Also, the server.R and ui.R code could be found using <https://github.com/AnalystJanine1/Shiny-App>.
+
+## Example of plot and and predicted charges
+
+```{r echo=FALSE}
+library(shiny)
+data <- read.csv("C:/Users/Lenovo/Documents/coursera/Data Product/Shiny Application/insurance.csv")
+data1 <- data[(data$region =="northeast" & data$smoker == "yes"), ]
+model3 <- lm(charges ~ bmi, data1)
+modelcoef  <- coef(model3)
+bmi        <- 25
+predicted_charges = modelcoef[1] + modelcoef[2]*bmi
+cat("The predicted charge for a bmi of ", 25, "is:",  round(predicted_charges, digits=2), "dollars.")
+```
+
+
+
+```{r echo=FALSE}
+library(shiny)
+data <- read.csv("C:/Users/Lenovo/Documents/coursera/Data Product/Shiny Application/insurance.csv")
+data1 <- data[(data$region =="northeast" & data$smoker == "yes"), ]
+model3 <- lm(charges ~ bmi, data1)
+plot1 <- plot(data1$bmi, data1$charges,
+                   main = "Scatterplot of bmi vs. medical charges",
+                   pch=16,
+                   cex = 1.3, col = "green",
+                   xlab='bmi',
+                   ylab='charges',)
+     abline(model3, col='blue')
+```
+
